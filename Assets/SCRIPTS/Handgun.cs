@@ -6,18 +6,17 @@ namespace Player
 {
     public class Handgun : Weapon
     {
-
-        
-
         public override void Shoot()
         {
-            Debug.Log("Pium");
+            if (Time.time >= nextFireTime && currentAmmo > 0)
+            {
+                if (isReloading) return; // Si el arma esta recargando no dispara
+                nextFireTime = Time.time / fireRate; // Calcula tiempo entre disparos
+                currentAmmo--;
+                Bullet(); // Instancia la bala hacia adelante
+                Debug.Log($"Disparando: {currentAmmo}/{ammo}");
+                Ammotext();
+            }
         }
-
-        public override void Reload()
-        {
-
-        }
-
     }
 }
