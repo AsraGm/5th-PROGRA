@@ -81,6 +81,11 @@ namespace Player
             isReloading = false;
         }
 
+        public bool CheckAmmo()
+        {
+            return currentAmmo <= 0 && ammo <= 0;
+        }
+
     }
 }
 
