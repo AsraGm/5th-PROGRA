@@ -148,5 +148,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 1032
   destroyDelay: 1
+  destroyEnemyOnHit: 1
+  damage: 100
+  pushBackForce: 5
+  bulletHoleDecal: {fileID: 2412682592380378611, guid: 718e4e42e7b161847b2edd30a937b36d,
+    type: 3}
+  decalLifetime: 10
+  decalOffset: 0.01

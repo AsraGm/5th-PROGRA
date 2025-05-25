@@ -39,6 +39,15 @@ namespace Player
         [Header("UI")]
         [SerializeField] private TextMeshProUGUI ammoText;
 
+        [Header("Visual Effects")]
+        public ParticleSystem P_Shoot;
+        public GameObject bulletHoleDecal;  // Prefab del agujero de bala
+        public float decalLifetime = 10f;  // Tiempo antes de destruir el decal
+
+        [Header("Sound Effects")]
+        public AudioSource audioSource;
+        public AudioClip shootSound;
+
         public abstract void Shoot(); // Insta
 
         public virtual void Reload()
@@ -51,9 +60,31 @@ namespace Player
 
         protected void Bullet()
         {
+            // 1. Efecto visual de disparo (muzzle flash)
+            if (P_Shoot != null)
+            {
+                P_Shoot.Play();
+            }
+
+            // 2. Sonido de disparo
+            if (audioSource != null && shootSound != null)
+            {
+                audioSource.PlayOneShot(shootSound);
+            }
+
+            // 3. Instanciar bala y detectar impacto
             GameObject bulletInstance = Instantiate(bulletPrefab, shootPoint.position, shootPoint.rotation);
             Rigidbody bulletRb = bulletInstance.GetComponent<Rigidbody>();
-            bulletRb.AddForce(shootPoint.forward * range, ForceMode.Impulse); // Instancia la bala hacia adelante
+            bulletRb.AddForce(shootPoint.forward * range, ForceMode.Impulse);
+
+            // 4. Opcional: Agregar lógica de agujero de bala directamente aquí
+            //    (O puedes manejarlo en el script de la bala, como prefieras)
+            BULLETBEHAVIOUR bulletBehaviour = bulletInstance.GetComponent<BULLETBEHAVIOUR>();
+            if (bulletBehaviour != null)
+            {
+                bulletBehaviour.bulletHoleDecal = bulletHoleDecal;
+                bulletBehaviour.decalLifetime = decalLifetime;
+            }
         }
 
         protected void Ammotext()
