@@ -14,10 +14,10 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 0
+  m_Fog: 1
   m_FogColor: {r: 0.36770517, g: 0.34669814, b: 0.46226418, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.07
+  m_FogDensity: 0.05
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -42861,74 +42861,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1945473262}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1001 &1953908067
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1873641540525146735, guid: ca6d654ba3b2c3245873d98975e3e759,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -29.471674
-      objectReference: {fileID: 0}
-    - target: {fileID: 1873641540525146735, guid: ca6d654ba3b2c3245873d98975e3e759,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -4.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1873641540525146735, guid: ca6d654ba3b2c3245873d98975e3e759,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.18072414
-      objectReference: {fileID: 0}
-    - target: {fileID: 1873641540525146735, guid: ca6d654ba3b2c3245873d98975e3e759,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1873641540525146735, guid: ca6d654ba3b2c3245873d98975e3e759,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1873641540525146735, guid: ca6d654ba3b2c3245873d98975e3e759,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1873641540525146735, guid: ca6d654ba3b2c3245873d98975e3e759,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1873641540525146735, guid: ca6d654ba3b2c3245873d98975e3e759,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1873641540525146735, guid: ca6d654ba3b2c3245873d98975e3e759,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1873641540525146735, guid: ca6d654ba3b2c3245873d98975e3e759,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2049035629327291677, guid: ca6d654ba3b2c3245873d98975e3e759,
-        type: 3}
-      propertyPath: m_Name
-      value: BULLET
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ca6d654ba3b2c3245873d98975e3e759, type: 3}
 --- !u!1 &1954097236
 GameObject:
   m_ObjectHideFlags: 0
@@ -47008,5 +46940,4 @@ SceneRoots:
   - {fileID: 296458882}
   - {fileID: 688155088}
   - {fileID: 256060531}
-  - {fileID: 1953908067}
   - {fileID: 357475080}

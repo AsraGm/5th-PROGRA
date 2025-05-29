@@ -60,7 +60,7 @@ namespace Player
 
         protected void Bullet()
         {
-            // 1. Efecto visual de disparo (muzzle flash)
+            //Efecto visual de disparo (muzzle flash)
             if (P_Shoot != null)
             {
                 P_Shoot.Play();
@@ -72,13 +72,13 @@ namespace Player
                 audioSource.PlayOneShot(shootSound);
             }
 
-            // 3. Instanciar bala y detectar impacto
+            // Instanciar bala y detectar impacto
             GameObject bulletInstance = Instantiate(bulletPrefab, shootPoint.position, shootPoint.rotation);
             Rigidbody bulletRb = bulletInstance.GetComponent<Rigidbody>();
             bulletRb.AddForce(shootPoint.forward * range, ForceMode.Impulse);
 
-            // 4. Opcional: Agregar lógica de agujero de bala directamente aquí
-            //    (O puedes manejarlo en el script de la bala, como prefieras)
+            // agujero de bala 
+        
             BULLETBEHAVIOUR bulletBehaviour = bulletInstance.GetComponent<BULLETBEHAVIOUR>();
             if (bulletBehaviour != null)
             {
