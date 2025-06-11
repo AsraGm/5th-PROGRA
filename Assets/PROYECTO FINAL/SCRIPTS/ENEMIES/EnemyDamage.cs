@@ -5,9 +5,21 @@ public class EnemyDamage : MonoBehaviour
     public int damage = 1;
     public GameObject deathParticlesPrefab; 
     public GameObject hitParticlesPrefab; 
+    private Spawn Spawn;
+    private bool isDead = false;
 
+    private void Start()
+    {
+        Spawn = FindObjectOfType<Spawn>(); // Busca el SpawnManager al inicio
+        if (Spawn == null)
+        {
+            Debug.LogError("No se encontró el SpawnManager!");
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
+        if (isDead) return;
+
         if (other.CompareTag("Player"))
         {
             if (hitParticlesPrefab != null)
@@ -15,10 +27,7 @@ public class EnemyDamage : MonoBehaviour
                 Instantiate(hitParticlesPrefab, transform.position, Quaternion.identity);
             }
 
-            Health health = other.GetComponent<Health>() ??
-                         other.GetComponentInParent<Health>() ??
-                         other.GetComponentInChildren<Health>();
-
+            Health health = other.GetComponent<Health>();
             if (health != null)
             {
                 health.GetDamage(damage);
@@ -33,6 +42,13 @@ public class EnemyDamage : MonoBehaviour
             Instantiate(deathParticlesPrefab, transform.position, Quaternion.identity);
         }
 
-        Destroy(gameObject);
+        if (Spawn != null)
+        {
+            Spawn.OnCharacterKilled(gameObject); 
+        }
+        else
+        {
+            Destroy(gameObject); 
+        }
     }
 }

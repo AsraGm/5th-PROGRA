@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6178741519167519813}
   - component: {fileID: 7945992642891396043}
   - component: {fileID: 3178790536703084852}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 1288306930087133250}
   - component: {fileID: 7363134385002355290}
   - component: {fileID: 4401135165304273005}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 1127959009386604322}
   - component: {fileID: 7148273584032336846}
   - component: {fileID: 2349149890556129767}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -327,7 +327,7 @@ GameObject:
   - component: {fileID: 7488251568366188208}
   - component: {fileID: 4213125361947347635}
   - component: {fileID: 7689350109266148159}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -432,7 +432,7 @@ GameObject:
   - component: {fileID: 4760834666584645970}
   - component: {fileID: 5891316731237253179}
   - component: {fileID: 5613058619121504716}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -537,7 +537,7 @@ GameObject:
   - component: {fileID: 861426894900212731}
   - component: {fileID: 4204370931221734242}
   - component: {fileID: 4293649847680276011}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -642,7 +642,7 @@ GameObject:
   - component: {fileID: 259148372141395736}
   - component: {fileID: 2557220997213760392}
   - component: {fileID: 8734285384504215926}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -747,13 +747,13 @@ GameObject:
   - component: {fileID: 3876716691604674250}
   - component: {fileID: 3124969645131128445}
   - component: {fileID: 4951066689344037496}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ENEMY #2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8559432728779221169
 Transform:
   m_ObjectHideFlags: 0
@@ -839,6 +839,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
+  deathParticlesPrefab: {fileID: 7630485899830730225, guid: f39223ecb2787c5438c35aa7529ba1b6,
+    type: 3}
+  hitParticlesPrefab: {fileID: 7630485899830730225, guid: f39223ecb2787c5438c35aa7529ba1b6,
+    type: 3}
 --- !u!1 &7558981269533738965
 GameObject:
   m_ObjectHideFlags: 0
@@ -851,7 +855,7 @@ GameObject:
   - component: {fileID: 4085254114578569556}
   - component: {fileID: 4306597870990535049}
   - component: {fileID: 8627501978632675020}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -956,7 +960,7 @@ GameObject:
   - component: {fileID: 1677662591345505346}
   - component: {fileID: 5140091736627794040}
   - component: {fileID: 3425620518360817697}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
