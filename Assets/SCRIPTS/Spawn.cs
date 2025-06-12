@@ -4,121 +4,70 @@ using UnityEngine;
 
 public class Spawn : MonoBehaviour
 {
-    [SerializeField] private int charPerRound = 6;
-    [SerializeField] private List<GameObject> char2Spawn; //personaje a spawnear
-    [SerializeField] private Transform[] spawnPoints; 
-    [SerializeField] private int charInScene = 4;//personajes en escena
-    [SerializeField] private int maxCharInstanceInQueue; //max de personje disponibles para usarse
+    [Header("Configuración de Rondas")]
+    [SerializeField] private int charactersPerRound = 6;
+    [SerializeField] private int charactersKilled = 0;
 
-    [SerializeField] private float spawnRate; //puntos de personajes
+    [Header("Spawning")]
+    [SerializeField] private List<GameObject> enemyPrefabs; // Cambiado a lista
+    [SerializeField] private Transform[] spawnPoints;
+    [SerializeField] private int maxCharacterCountInScene = 3;
+    [SerializeField] private int maxCharacterInstancesinQueue = 20;
+    [SerializeField] private float spawnRate = 2f;
 
-    private int charKilled = 0;
-    private int maxCharInScene = 0;
-    Queue<GameObject> charQueue; // Esta va a ser la fila de los personajes
-    private bool isSpawning = false;
+    private int charactersSpawnedThisRound = 0;
+    private int charactersAliveInScene = 0;
+    private float spawnTimer = 0f;
 
-    void Start()
+    private void Update()
     {
-        if (char2Spawn == null || char2Spawn.Count == 0)
+        if (enemyPrefabs.Count == 0) return; // Seguridad si no hay prefabs
+
+        spawnTimer += Time.deltaTime;
+
+        if (spawnTimer >= spawnRate)
         {
-            Debug.LogError("No hay prefabs de enemigos asignados en char2Spawn!");
-            return;
-        }
-
-        if (spawnPoints == null || spawnPoints.Length == 0)
-        {
-            Debug.LogError("No hay puntos de spawn asignados!");
-            return;
-        }
-
-        StartPool();
-    }
-
-    private void StartPool()
-    {
-        charQueue = new Queue<GameObject>();
-        for (int i = 0; i < maxCharInstanceInQueue; i++)
-        {
-            GameObject prefab = char2Spawn[Random.Range(0, char2Spawn.Count)];
-            GameObject instance = Instantiate(prefab);
-            instance.name = "Enemy #" + i;
-            instance.SetActive(false);
-            charQueue.Enqueue(instance);
-        }
-        StartCoroutine(SpawnInitialWave());
-    }
-
-    private IEnumerator SpawnInitialWave()
-    {
-        Debug.Log($"Iniciando oleada para {charPerRound} enemigos");
-
-        int enemiesToSpawn = Mathf.Min(charPerRound, maxCharInScene - charInScene);
-
-        for (int i = 0; i < enemiesToSpawn; i++)
-        {
-            SpawnSingleCharacter();
-            yield return new WaitForSeconds(spawnRate);
+            spawnTimer = 0f;
+            TrySpawnCharacter();
         }
     }
 
-    private void SpawnSingleCharacter()
+    private void TrySpawnCharacter()
     {
-        Debug.Log($"Intentando spawnear - EnEscena: {charInScene}, Max: {maxCharInScene}, Cola: {charQueue.Count}");
+        if (charactersSpawnedThisRound >= charactersPerRound) return;
+        if (charactersAliveInScene >= maxCharacterCountInScene) return;
+        if (maxCharacterInstancesinQueue <= 0) return;
 
-        if (charInScene >= maxCharInScene)
-        {
-            Debug.Log("Límite en escena alcanzado");
-            return;
-        }
+        Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+        GameObject enemyPrefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Count)];
+        GameObject enemy = Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+        enemy.SetActive(true); // Forzar activación
 
-        if (charQueue.Count == 0)
-        {
-            Debug.LogWarning("Cola vacía");
-            return;
-        }
+        charactersSpawnedThisRound++;
+        charactersAliveInScene++;
+        maxCharacterInstancesinQueue--;
 
-        GameObject character = charQueue.Dequeue();
-        if (character == null)
-        {
-            Debug.LogError("Enemigo nulo en cola");
-            return;
-        }
-
-        character.transform.position = spawnPoints[Random.Range(0, spawnPoints.Length)].position;
-        character.SetActive(true); 
-        charInScene++;
-
-        Debug.Log($"Spawn exitoso: {character.name} en {character.transform.position}");
+        EnemyNotifier notifier = enemy.GetComponent<EnemyNotifier>();
+        if (notifier == null) notifier = enemy.AddComponent<EnemyNotifier>();
+        notifier.SetSpawner(this);
     }
 
-    public void OnCharacterKilled(GameObject killedCharacter)
+    public void NotifyEnemyKilled()
     {
-        if (killedCharacter == null) return;
+        charactersKilled++;
+        charactersAliveInScene--;
 
-        killedCharacter.SetActive(false);
-        charQueue.Enqueue(killedCharacter);
-
-        charInScene--;
-        charKilled++;
-
-        Debug.Log($"Enemigo eliminado. Restantes: {charPerRound - charKilled}/{charPerRound}");
-
-        if (charKilled < charPerRound)
+        if (charactersKilled >= charactersPerRound)
         {
-            StartCoroutine(RespawnWithDelay());
-        }
-        else
-        {
-            Debug.Log("Ronda completada. Preparando nueva oleada...");
-            charKilled = 0;
-            charPerRound += 2;
-            StartCoroutine(SpawnInitialWave());
+            StartNextRound();
         }
     }
 
-    private IEnumerator RespawnWithDelay()
+    private void StartNextRound()
     {
-        yield return new WaitForSeconds(spawnRate); 
-        SpawnSingleCharacter();
+        charactersPerRound += 2;
+        charactersKilled = 0;
+        charactersSpawnedThisRound = 0;
+        Debug.Log($"Nueva ronda: {charactersPerRound} enemigos");
     }
 }

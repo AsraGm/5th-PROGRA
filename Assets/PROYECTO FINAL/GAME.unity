@@ -28543,8 +28543,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b0d827febfc02c40b3fd7d89ac0f2fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charPerRound: 6
-  char2Spawn:
+  charactersPerRound: 6
+  charactersKilled: 0
+  enemyPrefabs:
   - {fileID: 5656707847138986182, guid: 7962176adec183f4fa8cc84391c36a85, type: 3}
   - {fileID: 6937343618639600363, guid: 8b18d7378f0dea9489a171c2015995b5, type: 3}
   spawnPoints:
@@ -28556,8 +28557,8 @@ MonoBehaviour:
   - {fileID: 806564592}
   - {fileID: 1967082367}
   - {fileID: 917669415}
-  charInScene: 0
-  maxCharInstanceInQueue: 12
+  maxCharacterCountInScene: 3
+  maxCharacterInstancesinQueue: 20
   spawnRate: 1
 --- !u!4 &1292261171
 Transform:

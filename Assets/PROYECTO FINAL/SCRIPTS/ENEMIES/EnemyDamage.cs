@@ -41,11 +41,6 @@ public class EnemyDamage : MonoBehaviour
         {
             Instantiate(deathParticlesPrefab, transform.position, Quaternion.identity);
         }
-
-        if (Spawn != null)
-        {
-            Spawn.OnCharacterKilled(gameObject); 
-        }
         else
         {
             Destroy(gameObject); 
