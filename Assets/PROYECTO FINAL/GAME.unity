@@ -8578,6 +8578,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 314355922}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &322418980
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 322418981}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &322418981
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 322418980}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.8898058, y: -10.40119, z: 42.16596}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &323001056
 GameObject:
   m_ObjectHideFlags: 0
@@ -41017,9 +41048,9 @@ MonoBehaviour:
     actualTemp: 0
     description: 
     windSpeed: 0
-  latitude: 40.7128
-  longitude: -74.0060
-  url: https://api.openweathermap.org/data/3.0/onecall?lat=40.7128&lon=-74.0060&appid=7fe45acb4f5a69f83c45312aad97613a&units=metric
+  latitude: 26.33583
+  longitude: 127.80139
+  url: https://api.openweathermap.org/data/3.0/onecall?lat=26.33583&lon=127.80139&appid=7fe45acb4f5a69f83c45312aad97613a&units=metric
 --- !u!4 &1899675489
 Transform:
   m_ObjectHideFlags: 0
@@ -46109,3 +46140,4 @@ SceneRoots:
   - {fileID: 1292261171}
   - {fileID: 86698454}
   - {fileID: 1899675489}
+  - {fileID: 322418981}
